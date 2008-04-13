@@ -5,6 +5,6 @@ Merb::Router.prepare do |r|
     admin.resources :posts
     admin.resource :session
   end
-  r.resources :posts
+  r.match('/posts.atom').to(:controller => 'posts', :action => 'index', :format => "atom")
   r.match('/').to(:controller => 'posts', :action =>'index')
 end
