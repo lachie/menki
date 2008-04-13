@@ -5,9 +5,12 @@ class Session < Admin::Base
   def new
     render
   end
+  def create
+    
+  end
   def destroy
     session[:logged_in] = nil
-    redirect url(:new_session)
+    redirect url(:admin_posts)
   end
 end
 end
