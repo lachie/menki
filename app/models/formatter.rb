@@ -1,4 +1,4 @@
-%w(redcloth bluecloth).each do |gem|
+%w(redcloth bluecloth haml).each do |gem|
   begin
     require gem
   rescue LoadError
@@ -22,6 +22,14 @@ class Formatter
       RedCloth.new(@body).to_html(:textile)
     end
   end
+  class HAML
+    def initialize(body)
+      @body = body
+    end
+    def to_html
+      Haml::Engine.new(@body).render
+    end
+  end
   class Html
     def initialize(body)
       @body = body
@@ -37,6 +45,8 @@ class Formatter
       Markdown
     when :textile
       Textile
+    when :haml
+      HAML
     when :html
       Html
     end.new(text).to_html
@@ -46,6 +56,7 @@ class Formatter
     formatters = ["html"]
     formatters << "textile" if defined?(RedCloth)
     formatters << "markdown" if defined?(BlueCloth)
+    formatters << "haml" if defined?(Haml)
     formatters
   end
 end
