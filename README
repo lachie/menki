@@ -2,12 +2,13 @@
 
 http://menkiblog.com
 
-Inspired by Enki, it's fashionable cousin, Menki is a base to build your own blog.
+Inspired by Enki, its fashionable cousin, Menki is a base to build your own blog.
 
-No configuring or funky template languages... just cold hard Merb and
-Datamapping goodness. No need to extend it with plugins, simply fork and rebase when necessary.
+No configuring or funky template languages. No need to monkey patch your
+additions with plugins. Simply fork and rebase when Menki
+gets updated.
 
-What Menki's got, and for good reasons:
+What Menki's got:
 
 * Merb
 * Datamapper for the model
@@ -16,29 +17,60 @@ What Menki's got, and for good reasons:
 * /posts/post-title URLs
 * Choice of post format: HAML, Markdown, Textile or straight HTML
 
-Currently on the TODO list:
+What Menki features are planned to be added soon:
 
 * Comments
-* An admin (only login/logout is completed so far)
+* An admin (only login/logout is completed so far) with post creation / livepreview
 
-Features that'll you'll never see:
+What you won't find under Menki's skirt:
 
-* A stylsheet - 
+* A pre-baked stylesheet
 * Pages - you can add easily add these yourself
+
+
+== Get up and running
+
+=== Step 1: Grab Menki
+
+git clone git@github.com:toolmantim/menki.git
+cd menki
+mate config/database.yml
+rake dm:db:automigrate
+merb
+
+=== Step 2: Customise
+
+* Edit config/menki.yml
+* Edit the views adding your own stylesheets etc
+
+=== Step 3
+
+* Profit
+
 
 == Currently Powering
 
 Nothing yet.
 
+
 == Support
 
 http://groups.google.com/group/menki
+
+
+== Contributing
+
+Bugfixes are always welcome, new features too if they're fitting with the
+Menki vibe. The mailing list is the best place for discussions, a git repo
+somwhere I can pull from is the best place for patches. Github's fun because
+we get to look at pretty pictures and things:
+http://github.com/toolmantim/menki/network
 
 == Author
 
 Tim Lucas <t.lucas@toolmantim.com>
 
+
 == Contributors
 
 You?
-
