@@ -1,5 +1,5 @@
 module Merb
-    module PostsHelper
+  module PostsHelper
 
-    end
+  end
 end

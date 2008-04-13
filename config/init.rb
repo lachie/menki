@@ -18,6 +18,8 @@ end
 use_orm :datamapper
 use_test :rspec
 
+Merb.add_mime_type :atom, :to_atom, %w[application/atom+xml]
+
 # These are some examples of how you might specify dependencies.
 # 
 # dependencies "RedCloth", "merb_helpers"

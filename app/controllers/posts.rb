@@ -1,6 +1,6 @@
 class Posts < Application
-  # provides :xml, :yaml, :js
-
+  provides :atom
+  
   def index
     @posts = Post.all
     display @posts
