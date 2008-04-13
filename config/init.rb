@@ -51,8 +51,10 @@ use_test :rspec
 # OR
 # dependencies "RedCloth" => "> 3.0", "ruby-aes-cext" => "= 1.0"
 
+# dependency "haml" - broken?
+require 'merb-haml' 
+
 Merb::BootLoader.after_app_loads do
   ### Add dependencies here that must load after the application loads:
-
-  # dependency "magic_admin" # this gem uses the app's model classes
+  require 'menki_config'
 end
