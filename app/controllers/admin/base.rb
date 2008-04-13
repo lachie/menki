@@ -1,6 +1,7 @@
 module Admin
 class Base < Application
   before :require_login
+  layout 'admin'
   
   protected
     def require_login
