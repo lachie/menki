@@ -1,4 +1,5 @@
 author: # Used in the Atom feeds
   name: Master Menki
   email: menki@menkiblog.com
-  www: http://menkiblog.com
+admin_open_id_urls:
+  - http://toolmantim.com

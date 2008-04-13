@@ -6,7 +6,7 @@ class Base < Application
   protected
     def require_login
       unless session[:logged_in]
-        redirect "/admin/session/new" # url(:admin_new_session) no workie?
+        redirect url(:admin_login)
         throw :halt
       end
     end

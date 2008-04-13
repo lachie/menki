@@ -1,1 +1,9 @@
-%p Login
+%h2 Login
+
+- if @error
+  %p.error= @error
+
+%form{ :action => url(:admin_login), :method => 'post' }
+  %label{ :for => "openid_url" } OpenID URL:
+  %input{ :type => "text", :id => "openid_url", :name => "openid_url", :value => "#{@openid_url}" }
+  %input{ :type => "submit", :value => "Login" }

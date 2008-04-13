@@ -28,6 +28,7 @@ Merb.add_mime_type :atom, :to_atom, %w[application/atom+xml]
 # OR
 # dependencies "RedCloth" => "> 3.0", "ruby-aes-cext" => "= 1.0"
 
+gem 'ruby-openid'
 require 'merb-haml' # dependency "haml" - broken?
 
 Merb::BootLoader.after_app_loads do

@@ -3,4 +3,8 @@
   %head
     %title Admin My Menki Blog
   %body
+    - if logged_in?
+      %form{ :action => url(:admin_logout), :method => "post" }
+        .logout
+          %input{ :type => "submit", :value => "Logout" }
     = catch_content :for_layout

@@ -1,1 +1,7 @@
 %p Home
+
+- for post in @posts
+  .post
+    %h2 post.title
+    .body post.body
+    = post.published_at

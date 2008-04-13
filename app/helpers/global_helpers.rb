@@ -1,5 +1,7 @@
 module Merb
   module GlobalHelpers
-    # helpers defined here available to all views.  
+    def logged_in?
+      session[:logged_in]
+    end
   end
 end
