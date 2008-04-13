@@ -3,4 +3,5 @@ class Post < DataMapper::Base
   property :body, :text
   property :title, :string
   property :published_at, :datetime
+  property :updated_at, :datetime
 end
