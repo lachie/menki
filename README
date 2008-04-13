@@ -2,11 +2,13 @@
 
 http://menkiblog.com
 
-Inspired by Enki, its fashionable cousin, Menki is a base to build your own blog.
+Inspired by its fashionable cousin Enki, Menki is a base to build your own blog upon.
 
-No configuring or funky template languages. No need to monkey patch your
-additions with plugins. Simply fork and rebase when Menki
-gets updated.
+No configuring, funky template languages, needing to monkey patch your
+additions with plugins or any of that non-sense. Simply branch, customise and
+when Menki gets updated you can rebase your branch. Menki is lean and mean to
+help make upgrades as painless as possible. Use of a decent SCM is highly
+recommended.
 
 What Menki's got:
 
@@ -14,6 +16,7 @@ What Menki's got:
 * Datamapper for the model
 * OpenID for the admin (multiple logins)
 * HAML with μFormats for the pretty bits (HAML == less code == cleaner merging)
+* ATOM
 * /posts/post-title URLs
 * Choice of post format: HAML, Markdown, Textile or straight HTML
 
@@ -66,11 +69,8 @@ somwhere I can pull from is the best place for patches. Github's fun because
 we get to look at pretty pictures and things:
 http://github.com/toolmantim/menki/network
 
-== Author
-
-Tim Lucas <t.lucas@toolmantim.com>
-
 
 == Contributors
 
+Tim Lucas <t.lucas@toolmantim.com>
 You?
