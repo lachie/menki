@@ -10,6 +10,7 @@ class Session < Admin::Base
   def new
     render
   end
+
   def create
     @openid_url = params[:openid_url]
     redirect openid_consumer.begin(@openid_url).redirect_url(absolute_url(:home), absolute_url(:admin_login_complete))
@@ -17,6 +18,7 @@ class Session < Admin::Base
     @error = e
     render :new
   end
+  
   def complete
     response = openid_consumer.complete(request.send(:query_params), 'http://'+request.host+request.path)
     @openid_url = response.identity_url
@@ -33,6 +35,7 @@ class Session < Admin::Base
       render :new
     end
   end
+  
   def destroy
     session[:logged_in] = nil
     redirect url(:admin_posts)

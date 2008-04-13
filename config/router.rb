@@ -8,6 +8,7 @@ Merb::Router.prepare do |r|
     admin.match("/login/complete").to(:controller => 'session', :action => 'complete').name(:admin_login_complete)
     admin.match("/logout", :method => :post).to(:controller => 'session', :action => 'destroy').name(:admin_logout)
   end
-  r.match('/posts.atom').to(:controller => 'posts', :action => 'index', :format => "atom")
+  r.resources :posts
+#  r.match('/posts.atom').to(:controller => 'posts', :action => 'index', :format => "atom")
   r.match('/').to(:controller => 'posts', :action =>'index').name(:home)
 end

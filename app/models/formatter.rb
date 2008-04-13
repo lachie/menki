@@ -1,3 +1,10 @@
+%w(redcloth bluecloth).each do |gem|
+  begin
+    require gem
+  rescue LoadError
+  end
+end
+
 class Formatter
   class Markdown
     def initialize(body)
@@ -24,28 +31,21 @@ class Formatter
     end
   end
 
-  def self.format(formatter_name, body)
-    case formatter_name.to_sym
+  def self.format(format, text)
+    case format.to_sym
     when :markdown
       Markdown
     when :textile
       Textile
     when :html
       Html
-    end.new(body).to_html
+    end.new(text).to_html
   end
   
   def self.formatters
     formatters = ["html"]
-    begin
-      require "redcloth"
-      formatters << "textile"
-    rescue LoadError
-    end
-    begin
-      require "bluecloth"
-      formatters << "markdown"
-    rescue LoadError
-    end
+    formatters << "textile" if defined?(RedCloth)
+    formatters << "markdown" if defined?(BlueCloth)
+    formatters
   end
 end

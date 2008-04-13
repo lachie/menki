@@ -1,7 +1,7 @@
-%p Home
-
-- for post in @posts
-  .post
-    %h2 post.title
-    .body post.body
-    = post.published_at
+%ul
+  - for post in @posts
+    %li
+      %h3
+        %a{ :href => url(:post, post) }
+          = post.title
+      = partial(:post, :with => post)

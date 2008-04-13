@@ -2,7 +2,7 @@ class Posts < Application
   provides :atom
   
   def index
-    @posts = Post.all
+    @posts = Post.all(:published_at.not => nil, :order => "published_at DESC", :limit => 5)
     display @posts
   end
 
