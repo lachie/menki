@@ -3,3 +3,4 @@ author: # Used in the Atom feeds
   email: menki@menkiblog.com
 admin_open_id_urls:
   - http://toolmantim.com
+default_format: markdown

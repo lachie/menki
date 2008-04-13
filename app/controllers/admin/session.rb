@@ -12,8 +12,7 @@ class Session < Admin::Base
   end
   def create
     @openid_url = params[:openid_url]
-    checkid_request = openid_consumer.begin(@openid_url)
-    redirect checkid_request.redirect_url(absolute_url(:home), absolute_url(:admin_login_complete))
+    redirect openid_consumer.begin(@openid_url).redirect_url(absolute_url(:home), absolute_url(:admin_login_complete))
   rescue OpenID::OpenIDError, Timeout::Error => e
     @error = e
     render :new
