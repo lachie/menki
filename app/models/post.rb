@@ -1,12 +1,18 @@
 class Post < DataMapper::Base
-  property :slug, :string
-  property :body, :text
-  property :title, :string
-  property :published_at, :datetime
+  property :slug, :string, :key => true
+  property :body, :text, :nullable => false
+  property :title, :string, :nullable => false
+  property :published_at, :datetime, :index => true
   property :updated_at, :datetime
-  property :format, :string
+  property :format, :string, :nullable => false
   
   def formatted_body
     Formatter.format(self.format, self.body)
+  end
+  def to_param
+    self.slug
+  end
+  def updated_or_published_at
+    updated_at || published_at
   end
 end

@@ -7,7 +7,7 @@ class Posts < Application
   end
 
   def show
-    @post = Post.first(params[:id])
+    @post = Post[params[:id]]
     raise NotFound unless @post
     display @post
   end

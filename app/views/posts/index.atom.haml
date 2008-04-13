@@ -1,25 +1,26 @@
 !!! XML
 %feed
-  %title Menki Blog
+  %title= MenkiConfig.atom.site_name
   %link{ :href => "#{absolute_url(:home)}", :rel => "self", :type => "application/atom+xml" }
   %link{ :href => "#{absolute_url(:home)}" }
   %updated
-  %subtitle
-  %id FEED ID
-  %icon FAVICON
-  %generator Menki
-  %rights
+    - if @posts.first
+      = @posts.first.updated_or_published_at
+    - else
+      = Time.local(2008, 01, 01)
+  %subtitle Great writing, since 1975.
+  %id= request.host
+  %icon= absolute_url(:home) + "favicon.ico"
+  %generator Menki - http://menkiblog.com
+  %rights "Creative Commons Attribution 3.0"
   - for post in @posts
     %entry
       %title post.title
-      %link{ :href => "", :rel => "alternate", :type => "text/html" }
-      %id ITEM ID
+      %link{ :href => absolute_url(:post, post), :rel => "alternate", :type => "text/html" }
+      %id= "#{request.host}:#{post.to_param}"
       %published post.published_at
-      %updated 
-      <dc:subject>news</dc:subject>
-      %category{ :term => "news", :scheme => "http://hobix.com/tags" }
-      %summary{ :type => "html" } A summary
+      %updated= post.updated_or_published_at
       %author
-        %name why the lucky stiff
-        %uri http://whytheluckystiff.net/
-        %email why@whytheluckystiff.net
+        %name= MenkiConfig.atom.author.name
+        %uri= absolute_url(:home)
+        %email= MenkiConfig.atom.author.email
