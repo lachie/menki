@@ -1,10 +1,9 @@
-atom:
-  site_name: My Menki Blog
+atom_feed:
+  name: My Menki Blog
+  subtitle: Catchy catch phrase
   author:
-    name: Master Menki
-    email: menki@menkiblog.com
+    name: The Menkster
+    email: menkster@menkilicious.com
 
 admin_open_id_urls:
   - http://menkiblog.com
-
-default_format: haml
