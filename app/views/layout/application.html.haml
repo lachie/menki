@@ -1,7 +1,11 @@
 !!!
 %html
   %head
-    %title My Menki Blog
+    %title= @page_title
   %body
-    %h1 My Menki Blog
+    %h1
+      %a{ :href => url(:home) } My Menki Blog
+    - if logged_in?
+      %p.admin
+        %a{ :href => url(:admin) } Menki Admin
     = catch_content :for_layout

@@ -24,7 +24,7 @@ class Session < Admin::Base
     @openid_url = response.identity_url
     if response.status.to_s == 'success'
       if MenkiConfig.admin_open_id_urls.map {|url| URI.parse(url)}.include?(URI.parse(response.identity_url))
-        session[:logged_in] = response.identity_url
+        cookies[:logged_in] = response.identity_url
         redirect url(:admin_posts)
       else
         @error = "OpenID URL not authorized"
@@ -37,7 +37,7 @@ class Session < Admin::Base
   end
   
   def destroy
-    session[:logged_in] = nil
+    cookies.delete(:logged_in)
     redirect url(:admin_posts)
   end
   

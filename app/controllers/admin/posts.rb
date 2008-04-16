@@ -6,6 +6,12 @@ class Posts < Admin::Base
     @posts = Post.all
     display @posts
   end
+  
+  def show
+    @post = Post.first(params[:id])
+    raise NotFound unless @post
+    display @post
+  end
 
   def new
     only_provides :html
@@ -23,7 +29,7 @@ class Posts < Admin::Base
   def create
     @post = Post.new(params[:post])
     if @post.save
-      redirect url(:admin, :post, @post)
+      redirect url(:admin_post, @post)
     else
       render :new
     end
@@ -33,7 +39,7 @@ class Posts < Admin::Base
     @post = Post.first(params[:id])
     raise NotFound unless @post
     if @post.update_attributes(params[:post])
-      redirect url(:admin, :post, @post)
+      redirect url(:admin_post, @post)
     else
       raise BadRequest
     end
@@ -43,7 +49,7 @@ class Posts < Admin::Base
     @post = Post.first(params[:id])
     raise NotFound unless @post
     if @post.destroy!
-      redirect url(:admin, :post)
+      redirect url(:admin_post)
     else
       raise BadRequest
     end

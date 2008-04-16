@@ -5,7 +5,7 @@ class Base < Application
   
   protected
     def require_login
-      unless session[:logged_in]
+      unless cookies[:logged_in]
         redirect url(:admin_login)
         throw :halt
       end

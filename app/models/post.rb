@@ -15,4 +15,7 @@ class Post < DataMapper::Base
   def updated_or_published_at
     updated_at || published_at
   end
+  def published?
+    published_at
+  end
 end

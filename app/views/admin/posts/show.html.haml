@@ -1,0 +1,11 @@
+%h2
+  = @post.title
+  - if @post.published?
+    %a{ :href => url(:post, @post) }= url(:post, @post)
+  - else
+    (Draft)
+
+%p
+  %a{ :href => url(:edit_admin_post, @post) } Edit
+
+.post-summary= @post.formatted_body[0..150]

@@ -30,6 +30,7 @@ Merb.add_mime_type :atom, :to_atom, %w[application/atom+xml]
 
 gem 'ruby-openid'
 require 'merb-haml' # dependency "haml" - broken?
+require 'merb_helpers'
 
 Merb::BootLoader.after_app_loads do
   require 'menki_config'

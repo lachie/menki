@@ -3,8 +3,18 @@
   %head
     %title Admin My Menki Blog
   %body
+    %h1
+      %a{:href => url(:admin)} Menki Admin
+    
+    %p.site
+      %a{ :href => url(:home) }= MenkiConfig.atom_feed.name
+      
     - if logged_in?
       %form{ :action => url(:admin_logout), :method => "post" }
         .logout
           %input{ :type => "submit", :value => "Logout" }
+      %ul.nav
+        %li
+          %a{:href => url(:new_admin_post)} New post
+
     = catch_content :for_layout

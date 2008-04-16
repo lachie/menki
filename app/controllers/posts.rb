@@ -7,7 +7,7 @@ class Posts < Application
   end
 
   def show
-    @post = Post[params[:id]]
+    @post = Post.first(params[:id], :published_at.not => nil)
     raise NotFound unless @post
     display @post
   end
