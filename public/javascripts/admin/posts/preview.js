@@ -14,9 +14,9 @@ $(function(){
         body: $("#post_body").attr("value") || "",
         format: $("#post_format option:selected").attr("value")
       },
-      function(data) {
-        $("#preview .html").html(data);
-        $("#preview .source pre").text(data);
+      function(formatted_body) {
+        $("#preview .html").html(formatted_body);
+        $("#preview .source pre").text(formatted_body);
       }
     );
     poll();
