@@ -55,5 +55,10 @@ class Posts < Admin::Base
     end
   end
   
+  def preview
+    only_provides :html
+    Formatter.format(params[:format], params[:body])
+  end
+  
 end
 end

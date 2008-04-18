@@ -3,6 +3,7 @@ Merb::Router.prepare do |r|
   r.match('/admin').to(:controller => 'admin/posts', :action => 'index').name(:admin)
   r.namespace :admin do |admin|
     admin.resources :posts, :name_prefix => "admin_"
+    admin.match("/posts/preview", :method => :post).to(:controller => 'posts', :action => 'preview')
     admin.match("/login", :method => :get).to(:controller => 'session', :action => 'new').name(:admin_login)
     admin.match("/login", :method => :post).to(:controller => 'session', :action => 'create').name(:admin_login)
     admin.match("/login/complete").to(:controller => 'session', :action => 'complete').name(:admin_login_complete)

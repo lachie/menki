@@ -1,6 +1,6 @@
 %h2 New post
 
-- require_js 'admin/jquery', 'admin/posts/slug'
+- require_js 'admin/jquery', 'admin/posts/slug', 'admin/posts/preview'
   
 - form_for(@post, :action => url(:admin_posts), :id => 'post') do
   %p= text_control :title, :label => "Title"
