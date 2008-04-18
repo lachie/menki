@@ -58,6 +58,8 @@ class Posts < Admin::Base
   def preview
     only_provides :html
     Formatter.format(params[:format], params[:body])
+  rescue Exception => e
+    "<p><strong>#{e.message}</strong></p>"
   end
   
 end
