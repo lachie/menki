@@ -4,6 +4,5 @@
   - for post in @posts
     %li
       %h3
-        %a{ :href => url(:post, post) }
-          = post.post_title
+        %a{ :href => url(:post, post) }= post.post_title
       = partial(:post, :with => post)

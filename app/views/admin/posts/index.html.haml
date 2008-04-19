@@ -3,5 +3,4 @@
 %ul.posts
 - for post in @posts
   %li
-    %a{ :href => url(:admin_post, post.id) }
-      = post_title post
+    %a{ :href => url(:admin_post, post.id) }= post_title post
