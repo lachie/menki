@@ -4,9 +4,8 @@ $(function(){
       <h2>Preview</h2>\
       <div class="html"></div>\
       <div class="source"><pre></pre></div>\
-     </div>'
-  ).insertAfter("form#post");
-  
+     </div>').insertAfter("form#post");
+
   var preview = function() {
     $.post(
       "/admin/posts/preview",
