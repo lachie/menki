@@ -19,12 +19,13 @@ What Menki's got:
 * ATOM
 * /posts/post-title URLs
 * Choice of post format: HAML, Markdown, Textile or straight HTML
+* Basic admin live preview and draft auto-saving
 
 What Menki features are planned to be added soon:
 
 * μFormats
 * Comments
-* An admin (only login/logout is completed so far) with post creation / livepreview
+* Sexytime Admin
 
 What you won't find under Menki's skirt:
 
