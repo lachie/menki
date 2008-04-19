@@ -1,6 +1,6 @@
 module Admin
 class Posts < Admin::Base
-  # provides :xml, :yaml, :js
+  provides :js #:xml, :yaml
 
   def index
     @posts = Post.all
@@ -29,9 +29,9 @@ class Posts < Admin::Base
   def create
     @post = Post.new(params[:post])
     if @post.save
-      redirect url(:admin_post, @post)
+      redirect url(:admin_post, @post.id) + ".#{content_type}"
     else
-      render :new
+      raise BadRequest
     end
   end
 
@@ -39,7 +39,7 @@ class Posts < Admin::Base
     @post = Post.first(params[:id])
     raise NotFound unless @post
     if @post.update_attributes(params[:post])
-      redirect url(:admin_post, @post)
+      redirect url(:admin_post, @post.id)
     else
       raise BadRequest
     end
@@ -55,9 +55,9 @@ class Posts < Admin::Base
     end
   end
   
-  def preview
+  def preview(format, body)
     only_provides :html
-    Formatter.format(params[:format], params[:body])
+    Formatter.format(format, body)
   rescue Exception => e
     "<p><strong>#{e.message}</strong></p>"
   end

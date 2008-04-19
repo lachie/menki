@@ -1,7 +1,7 @@
 %h2 Posts
 
+%ul.posts
 - for post in @posts
-  %ul.posts
-    %li
-      %a{ :href => url(:admin_post, post) }
-        = post.title
+  %li
+    %a{ :href => url(:admin_post, post.id) }
+      = post_title post

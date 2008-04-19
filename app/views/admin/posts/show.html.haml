@@ -6,6 +6,6 @@
     (Draft)
 
 %p
-  %a{ :href => url(:edit_admin_post, @post) } Edit
+  %a{ :href => url(:edit_admin_post, @post.id) } Edit
 
 .post-summary= @post.formatted_body[0..150]
