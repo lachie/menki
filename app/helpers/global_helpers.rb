@@ -1,7 +1,7 @@
 module Merb
   module GlobalHelpers
     def logged_in?
-      cookies[:logged_in]
+      cookies[:logged_in_identity_url]
     end
     def explanation(text)
       %(<em class="explanation">#{text}</em>)

@@ -23,8 +23,8 @@ class Session < Admin::Base
     response = openid_consumer.complete(request.send(:query_params), 'http://'+request.host+request.path)
     @openid_url = response.identity_url
     if response.status.to_s == 'success'
-      if MenkiConfig.admin_open_id_urls.map {|url| URI.parse(url)}.include?(URI.parse(response.identity_url))
-        cookies[:logged_in] = response.identity_url
+      if valid_admin_open_id?(response.identity_url)
+        cookies[:logged_in_identity_url] = response.identity_url
         redirect url(:admin_posts)
       else
         @error = "OpenID URL not authorized"
@@ -37,7 +37,7 @@ class Session < Admin::Base
   end
   
   def destroy
-    cookies.delete(:logged_in)
+    cookies.delete(:logged_in_identity_url)
     redirect url(:admin_posts)
   end
   
