@@ -2,4 +2,10 @@
 
 %h2= @post.title
 
+- if logged_in?
+  = partial(:show_admin_links)
+
 = partial :post, :with => @post
+
+- if logged_in?
+  = partial(:show_admin_links)

@@ -1,0 +1,4 @@
+%p= text_control :title, :label => "Title"
+%p= text_control :slug, :label => "Slug"
+%p= text_area_control :body, :label => "Body"
+%p= select_control :format, :label => "Format", :collection => Formatter.formatters, :selected => MenkiConfig.default_post_format

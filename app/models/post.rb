@@ -6,6 +6,8 @@ class Post < DataMapper::Base
   property :updated_at, :datetime
   property :format, :string
 
+  FORMATTING_ERROR = "Error formatting body"
+
   validates_presence_of :slug, :body, :title, :if => Proc.new { published? }
 
   validates_true_for :body,
@@ -26,7 +28,7 @@ class Post < DataMapper::Base
   end
   
   def formatted_body
-    Formatter.format(self.format, self.body) rescue "Error formatting body"
+    Formatter.format(self.format, self.body) rescue FORMATTING_ERROR
   end
 
   def updated_or_published_at

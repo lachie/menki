@@ -1,0 +1,5 @@
+.admin
+  %a{:href => url(:edit_admin_post, @post.id)} Edit
+  %form{:action => url(:publish_admin_post, @post.id), :method => "post"}
+    %div
+      %input{:type => "submit", :value => "Publish"}

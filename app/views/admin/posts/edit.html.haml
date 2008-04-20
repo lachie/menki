@@ -1,0 +1,8 @@
+%h2 Edit post
+
+- require_js 'admin/jquery', 'admin/posts/slug', 'admin/posts/preview'
+- require_js 'admin/posts/auto_save' if @post.draft?
+  
+- form_for(@post, :action => url(:admin_post, @post.id), :id => 'post', :method => :put) do
+  = partial(:form)
+  %p= submit_button "Preview"

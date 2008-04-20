@@ -4,7 +4,7 @@ module Merb
       %(<em class="explanation">#{text}</em>)
     end
     def post_title(post)
-      (post.title && !post.title.empty?) ? post.title : "Untitled"
+      (post.title && !post.title.empty?) ? post.title : "(Untitled)"
     end
   end
 end

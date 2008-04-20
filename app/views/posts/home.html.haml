@@ -1,0 +1,6 @@
+- @page_title = "Menki Blog"
+
+- if @post
+  %h3
+    %a{ :href => url(:post, @post) }= @post.post_title
+  = partial(:post, :with => @post)

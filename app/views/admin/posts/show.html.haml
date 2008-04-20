@@ -1,11 +1,18 @@
 %h2
-  = @post.title
-  - if @post.published?
-    %a{ :href => url(:post, @post) }= url(:post, @post)
-  - else
+  = post_title @post
+  - if !@post.published?
     (Draft)
+  %a{ :href => post_url(@post) }= post_url(@post)
 
 %p
   %a{ :href => url(:edit_admin_post, @post.id) } Edit
 
-.post-summary= @post.formatted_body[0..150]
+= form_tag(:action => url(:admin_post, @post.id), :method => :delete) do
+  %p
+    %input{:type => "submit", :value => "Delete"}
+
+.post-body
+  - if @post.body.nil? || @post.body.empty?
+    (no body)
+  - else
+    = @post.formatted_body[0..150]

@@ -1,3 +1,6 @@
 .body= post.formatted_body
 
-%p= "Published #{post.published_at.strftime("%Y-%m-%d")}"
+- if post.published?
+  %p= "Published #{post.published_at.strftime("%Y-%m-%d")}"
+- else
+  %p= "Draft"

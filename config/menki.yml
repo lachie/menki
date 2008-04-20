@@ -7,5 +7,6 @@ atom_feed:
 
 admin_open_id_urls:
   - http://menkiblog.com
+  - http://toolmantim.com
 
 default_post_format: markdown

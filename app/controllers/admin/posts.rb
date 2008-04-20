@@ -7,8 +7,8 @@ class Posts < Admin::Base
     display @posts
   end
   
-  def show
-    @post = Post.first(params[:id])
+  def show(id)
+    @post = Post.first(id)
     raise NotFound unless @post
     display @post
   end
@@ -19,37 +19,37 @@ class Posts < Admin::Base
     render
   end
 
-  def edit
+  def edit(id)
     only_provides :html
-    @post = Post.first(params[:id])
+    @post = Post.first(id)
     raise NotFound unless @post
     render
   end
 
-  def create
-    @post = Post.new(params[:post])
+  def create(post)
+    @post = Post.new(post)
     if @post.save
-      redirect url(:admin_post, @post.id) + ".#{content_type}"
+      redirect_to_post
     else
       raise BadRequest
     end
   end
 
-  def update
-    @post = Post.first(params[:id])
+  def update(id, post)
+    @post = Post.first(id)
     raise NotFound unless @post
-    if @post.update_attributes(params[:post])
-      redirect url(:admin_post, @post.id)
+    if @post.update_attributes(post)
+      redirect_to_post
     else
       raise BadRequest
     end
   end
 
-  def destroy
-    @post = Post.first(params[:id])
+  def destroy(id)
+    @post = Post.first(id)
     raise NotFound unless @post
     if @post.destroy!
-      redirect url(:admin_post)
+      redirect url(:admin, :posts)
     else
       raise BadRequest
     end
@@ -62,5 +62,26 @@ class Posts < Admin::Base
     "<p><strong>#{e.message}</strong></p>"
   end
   
+  def publish(id)
+    only_provides :html
+    @post = Post.first(id)
+    @post.published_at = Time.now
+    if @post.save
+      redirect_to_post
+    else
+      raise BadRequest
+    end
+  end
+  
+  private
+    # Redirect to the post keeping to the same content_type
+    def redirect_to_post
+      case content_type
+      when :js
+        redirect url(:post, @post) + ".js"
+      when :html
+        redirect post_url(@post)
+      end
+    end
 end
 end

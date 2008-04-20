@@ -1,0 +1,11 @@
+- @page_title = h(post_title @post)
+
+%h2= post_title @post
+
+- if logged_in?
+  = partial(:preview_admin_links)
+
+= partial :post, :with => @post
+
+- if logged_in?
+  = partial(:preview_admin_links)
