@@ -2,5 +2,5 @@
 
 - if @post
   %h3
-    %a{ :href => url(:post, @post) }= @post.post_title
+    %a{ :href => url(:post, @post) }= post_title @post
   = partial(:post, :with => @post)
